@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/center/index",
+    "pages/cart/cart",
+    "pages/goods/goods"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "图书商城",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#13227a",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/icon/h.png",
+        "selectedIconPath": "static/icon/ha.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/goods/goods",
+        "iconPath": "static/icon/s.png",
+        "selectedIconPath": "static/icon/sa.png",
+        "text": "商品"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "iconPath": "static/icon/c.png",
+        "selectedIconPath": "static/icon/ca.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/center/index",
+        "iconPath": "static/icon/m.png",
+        "selectedIconPath": "static/icon/ma.png",
+        "text": "我"
+      }
+    ]
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
+}
