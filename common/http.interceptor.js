@@ -20,7 +20,7 @@ const install = (Vue, vm) => {
 		// 见：https://uviewui.com/components/globalVariable.html
 		// config.header.token = vm.token;
 		//config.header.Authorization = "Bearer " + vm.access_token
-		config.header.Authorization = "Bearer " + "sdfad"
+		config.header.Authorization = "Bearer " + vm.vuex_token
 
 		// 可以对某个url进行特别处理，此url参数为this.$u.get(url)中的url值
 		// if(config.url == '/user/login') config.header.noToken = true;
@@ -45,11 +45,14 @@ const install = (Vue, vm) => {
 			vm.$u.toast(data.message)
 			return false;
 		} else if (statusCode == 401) {
-			// 401 token失败，跳转登录
-			vm.$u.toast('验证失败，请重新登录')
-			setTimeout(() => {
-				vm.$u.route('/pages/usre/login')
-			}, 1500)
+			// TODO 401 有两种情况，一种为认证未通过，一种是没有token或过期
+			if (data.message == "Unauthorized") {
+				vm.$u.toast("账号或密码错误")
+			}
+			else {
+				// 如果请求了需要登录的api跳转登录
+				vm.$u.utils.isLogin()
+			}
 			return false;
 		} else if (statusCode == 422) {
 			// 表单验证未通过
@@ -63,16 +66,16 @@ const install = (Vue, vm) => {
 			return false;
 		}
 	}
-	
+
 	// 增加patch请求
-	vm.$u.patch = (url,params = {}) => {
+	vm.$u.patch = (url, params = {}) => {
 		const _params = {
 			...params,
-			_method:'PATCH'
+			_method: 'PATCH'
 		}
-		return vm.$u.post(url,_params)
+		return vm.$u.post(url, _params)
 	}
-	
+
 }
 
 export default {

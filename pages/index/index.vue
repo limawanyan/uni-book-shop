@@ -43,6 +43,7 @@
 			}
 		},
 		onLoad() {
+		    //this.$u.api.userInfo()
 			this.getData()
 		},
 		methods: {
